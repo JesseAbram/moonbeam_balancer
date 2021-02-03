@@ -1,3 +1,5 @@
+// const PrivateKeyProvider = require ('./private-provider')
+
 module.exports = {
     networks: {
         development: {
@@ -6,6 +8,12 @@ module.exports = {
             network_id: '*', // Any network (default: none)
             gas: 10000000,
         },
+
+        // moonbeam: {
+        //     provider: () => new PrivateKeyProvider(privateKey, "http://35.203.125.209:9933/", 43),
+        //     network_id: 43
+        //   },
+
         coverage: {
             host: 'localhost',
             network_id: '*',

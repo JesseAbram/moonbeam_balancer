@@ -8,6 +8,8 @@
         "compile": "truffle compile",
         "testrpc": "ganache-cli --deterministic --gasLimit 10000000",
         "test": "truffle test",
+        "deploy": "truffle deploy --network development",
+        "moonbeam": "truffle deploy --network moonbeam",
         "test:verbose": "VERBOSE=true truffle test",
         "coverage": "yarn solidity-coverage",
         "lint": "eslint .",
@@ -39,7 +41,10 @@
         "web3": "^1.2.0"
     },
     "dependencies": {
+        "@openzeppelin/contracts": "2.5.0",
         "decimal.js": "^10.2.0",
+        "dotenv": "^8.2.0",
+        "ethers": "^5.0.28",
         "ganache-cli": "^6.7.0",
         "global": "^4.4.0"
     }
