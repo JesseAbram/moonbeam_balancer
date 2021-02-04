@@ -61,6 +61,15 @@ const deploy = async () => {
   const tx4 = await factoryInstance.newBPool({
     gasLimit: ethers.BigNumber.from("10000000"),
   });
+
+  const tx5 = await wallet.sendTransaction({
+    gasLimit: ethers.BigNumber.from("10000000"),
+    data: tokenData,
+  });
+  console.log(`Transaction successful with hash: ${tx5.hash}`);
+  const receipt5 = await getReceipt(tx5.hash);
+  const proxyAddress = receipt5.contractAddress;
+
   const receipt4 = await getReceipt(tx4.hash);
   const exchangeAddress = receipt4.logs[1].address;
 
@@ -70,6 +79,7 @@ const deploy = async () => {
   const token2Instance = token2.connect(wallet);
   const toMint = "1000000000000000000000";
   const denorm = "1000000000000000000";
+  await token1Instance.mint(wallet.address, toMint);
   await token1Instance.mint(wallet.address, toMint);
   await token2Instance.mint(wallet.address, toMint);
   await token1Instance.approve(exchangeAddress, toMint);
@@ -95,6 +105,7 @@ const deploy = async () => {
     token1Address,
     token2Address,
     factoryAddress,
+    proxyAddress,
   });
 };
 
